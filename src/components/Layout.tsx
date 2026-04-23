@@ -21,10 +21,10 @@ export function Navbar() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+            <div className="w-8 h-8 bg-orange-600 rounded-lg flex items-center justify-center">
               <div className="w-4 h-4 border-2 border-white rounded-full"></div>
             </div>
-            <span className="text-xl font-bold tracking-tight">SHOP<span className="text-blue-600">MOBILE</span></span>
+            <span className="text-xl font-bold tracking-tight">SHOP<span className="text-orange-600">MOBILE</span></span>
           </Link>
 
           {/* Navigation Links - Desktop */}
@@ -35,7 +35,7 @@ export function Navbar() {
                 to={link.path} 
                 className={cn(
                   "transition-colors",
-                  location.pathname === link.path ? "text-blue-600 font-bold" : "text-slate-600 hover:text-blue-600"
+                  location.pathname === link.path ? "text-orange-600 font-bold" : "text-slate-600 hover:text-orange-600"
                 )}
               >
                 {link.name}
@@ -52,19 +52,19 @@ export function Navbar() {
               <input 
                 type="text" 
                 placeholder="Tìm sản phẩm..." 
-                className="bg-slate-100 rounded-full py-1.5 pl-9 pr-4 text-xs w-48 focus:outline-none focus:ring-2 focus:ring-blue-500 border-none"
+                className="bg-slate-100 rounded-full py-1.5 pl-9 pr-4 text-xs w-48 focus:outline-none focus:ring-2 focus:ring-orange-500 border-none"
               />
             </div>
             <div className="flex items-center gap-3 text-slate-500">
-               <button className="hover:text-blue-600 transition-colors">
+               <button className="hover:text-orange-600 transition-colors">
                   <User size={20} />
                </button>
-               <Link to="/cart" className="hover:text-blue-600 relative transition-colors">
+               <Link to="/cart" className="hover:text-orange-600 relative transition-colors">
                   <ShoppingCart size={20} />
                   <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[8px] w-3.5 h-3.5 rounded-full flex items-center justify-center font-bold">2</span>
                </Link>
                <button 
-                className="md:hidden p-1 hover:text-blue-600 transition-colors"
+                className="md:hidden p-1 hover:text-orange-600 transition-colors"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
               >
                 <Menu size={20} />
@@ -85,7 +85,7 @@ export function Navbar() {
                 onClick={() => setIsMenuOpen(false)}
                 className={cn(
                   "block px-3 py-2.5 rounded-xl text-base font-medium transition-colors",
-                  location.pathname === link.path ? "bg-blue-50 text-blue-600" : "text-slate-600 hover:bg-slate-50"
+                  location.pathname === link.path ? "bg-orange-50 text-orange-600" : "text-slate-600 hover:bg-slate-50"
                 )}
               >
                 {link.name}
@@ -106,9 +106,9 @@ export function Footer() {
           &copy; 2024 SHOPMOBILE - MUA ĐIỆN THOẠI CHÍNH HÃNG, GIÁ TỐT NHẤT VIỆT NAM
         </div>
         <div className="flex gap-6">
-          <Link to="#" className="hover:text-blue-600 transition-colors">Chính sách bảo mật</Link>
-          <Link to="#" className="hover:text-blue-600 transition-colors">Điều khoản</Link>
-          <Link to="#" className="hover:text-blue-600 transition-colors">Sitemap (SEO)</Link>
+          <Link to="#" className="hover:text-orange-600 transition-colors">Chính sách bảo mật</Link>
+          <Link to="#" className="hover:text-orange-600 transition-colors">Điều khoản</Link>
+          <Link to="#" className="hover:text-orange-600 transition-colors">Sitemap (SEO)</Link>
         </div>
       </div>
     </footer>

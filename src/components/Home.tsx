@@ -25,9 +25,9 @@ function ProductCard({ product }: { product: any; key?: string }) {
         )}
       </Link>
       <div className="p-5 flex flex-col flex-1">
-        <div className="text-[10px] uppercase font-bold text-blue-600 tracking-widest mb-1">{product.category}</div>
+        <div className="text-[10px] uppercase font-bold text-orange-600 tracking-widest mb-1">{product.category}</div>
         <Link to={`/product/${product.id}`} className="block mb-2">
-          <h3 className="font-bold text-slate-900 group-hover:text-blue-600 transition-colors line-clamp-1">
+          <h3 className="font-bold text-slate-900 group-hover:text-orange-600 transition-colors line-clamp-1">
             {product.name}
           </h3>
         </Link>
@@ -37,7 +37,7 @@ function ProductCard({ product }: { product: any; key?: string }) {
             <span className="text-slate-400 line-through text-xs">{new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(product.oldPrice)}</span>
           )}
         </div>
-        <button className="w-full py-2.5 bg-slate-100 hover:bg-blue-600 hover:text-white transition-all duration-300 rounded-xl text-sm font-bold text-slate-700">
+        <button className="w-full py-2.5 bg-slate-100 hover:bg-orange-600 hover:text-white transition-all duration-300 rounded-xl text-sm font-bold text-slate-700">
           Mua ngay
         </button>
       </div>
@@ -69,7 +69,7 @@ export function Home() {
   if (loading) {
     return (
       <div className="min-h-[80vh] flex items-center justify-center">
-        <Loader2 className="animate-spin text-blue-600" size={48} />
+        <Loader2 className="animate-spin text-orange-600" size={48} />
       </div>
     );
   }
@@ -82,10 +82,10 @@ export function Home() {
           {/* Large Feature Card */}
           <div className="md:col-span-8 bento-card relative min-h-[400px] sm:min-h-[500px] flex items-center">
             <div className="p-8 sm:p-12 md:p-16 space-y-6 z-10 w-full sm:w-2/3">
-               <div className="inline-block px-3 py-1 bg-blue-100 text-blue-700 text-[10px] font-bold uppercase tracking-widest rounded-full">Sản phẩm mới</div>
+               <div className="inline-block px-3 py-1 bg-orange-100 text-orange-700 text-[10px] font-bold uppercase tracking-widest rounded-full">Sản phẩm mới</div>
                <h1 className="text-4xl sm:text-6xl font-black leading-tight tracking-tight text-slate-900">
                  {mainProduct.name.split(' ').slice(0, 2).join(' ')}<br/>
-                 <span className="text-blue-600 font-medium text-2xl sm:text-4xl">{mainProduct.name.split(' ').slice(2).join(' ')}</span>
+                 <span className="text-orange-600 font-medium text-2xl sm:text-4xl">{mainProduct.name.split(' ').slice(2).join(' ')}</span>
                </h1>
                <p className="text-slate-500 text-sm max-w-sm line-clamp-2 sm:line-clamp-none">
                  {mainProduct.description}
@@ -97,7 +97,7 @@ export function Home() {
                  )}
                </div>
                <div className="flex gap-4">
-                 <Link to={`/product/${mainProduct.id}`} className="bg-blue-600 text-white px-8 py-3.5 rounded-2xl font-bold text-sm shadow-xl shadow-blue-200 hover:bg-blue-700 transition-colors">
+                 <Link to={`/product/${mainProduct.id}`} className="bg-orange-600 text-white px-8 py-3.5 rounded-2xl font-bold text-sm shadow-xl shadow-orange-200 hover:bg-orange-700 transition-colors">
                    Mua ngay
                  </Link>
                  <Link to={`/product/${mainProduct.id}`} className="bg-slate-100 text-slate-700 px-8 py-3.5 rounded-2xl font-bold text-sm hover:bg-slate-200 transition-colors">
@@ -119,7 +119,7 @@ export function Home() {
           <div className="md:col-span-4 bento-card-dark p-6 sm:p-8 flex flex-col justify-between">
             <div className="flex justify-between items-start">
               <div className="w-12 h-12 bg-white/10 rounded-2xl flex items-center justify-center">
-                <TrendingUp size={24} className="text-blue-400" />
+                <TrendingUp size={24} className="text-orange-400" />
               </div>
               <span className="text-[10px] font-bold uppercase tracking-widest opacity-60">Danh mục hot</span>
             </div>
@@ -127,7 +127,7 @@ export function Home() {
               <h3 className="text-2xl font-bold mb-6">Dòng máy phổ biến</h3>
               <div className="grid grid-cols-2 gap-3 text-xs font-bold">
                 {CATEGORIES.filter(c => c !== 'Tất cả').slice(0, 4).map(cat => (
-                   <Link key={cat} to={`/products?category=${cat}`} className="bg-white/10 p-4 rounded-2xl hover:bg-blue-600 transition-all cursor-pointer">
+                   <Link key={cat} to={`/products?category=${cat}`} className="bg-white/10 p-4 rounded-2xl hover:bg-orange-600 transition-all cursor-pointer">
                       {cat}
                    </Link>
                 ))}
@@ -153,7 +153,7 @@ export function Home() {
           <div className="flex justify-between items-start mb-6">
             <h3 className="text-xl font-bold text-slate-900">Ưu Đãi Đặc Biệt</h3>
             <div className="flex gap-1.5">
-              <div className="w-2.5 h-2.5 rounded-full bg-blue-600"></div>
+              <div className="w-2.5 h-2.5 rounded-full bg-orange-600"></div>
               <div className="w-2.5 h-2.5 rounded-full bg-slate-200"></div>
               <div className="w-2.5 h-2.5 rounded-full bg-slate-200"></div>
             </div>
@@ -178,7 +178,7 @@ export function Home() {
            </div>
            <div className="space-y-4 z-10 pt-6">
              <div className="flex items-center gap-3 text-xs font-bold text-slate-700">
-                <Truck size={18} className="text-blue-600" />
+                <Truck size={18} className="text-orange-600" />
                 <span>Giao hàng miễn phí</span>
              </div>
              <div className="flex items-center gap-3 text-xs font-bold text-slate-700">
@@ -186,7 +186,7 @@ export function Home() {
                 <span>Bảo hành chính hãng</span>
              </div>
            </div>
-           <div className="absolute -right-8 -bottom-8 w-32 h-32 bg-blue-200 rounded-full opacity-20 pointer-events-none"></div>
+           <div className="absolute -right-8 -bottom-8 w-32 h-32 bg-orange-200 rounded-full opacity-20 pointer-events-none"></div>
         </div>
       </div>
 
@@ -194,10 +194,10 @@ export function Home() {
       <section className="pt-10">
         <div className="flex items-center justify-between mb-8">
            <h2 className="text-2xl font-bold text-slate-900 flex items-center">
-              <div className="w-2 h-6 bg-blue-600 rounded-full mr-3"></div>
+              <div className="w-2 h-6 bg-orange-600 rounded-full mr-3"></div>
               Sản phẩm nổi bật
            </h2>
-           <Link to="/products" className="text-blue-600 font-bold text-sm tracking-widest uppercase hover:underline flex items-center gap-1">
+           <Link to="/products" className="text-orange-600 font-bold text-sm tracking-widest uppercase hover:underline flex items-center gap-1">
               Tất cả <ChevronRight size={16} />
            </Link>
         </div>
@@ -212,7 +212,7 @@ export function Home() {
       <section className="pt-10">
         <div className="flex items-center justify-between mb-8">
            <h2 className="text-2xl font-bold text-slate-900">Tin Công Nghệ</h2>
-           <Link to="/news" className="text-sm font-bold text-blue-600 tracking-widest uppercase">Xem blog</Link>
+           <Link to="/news" className="text-sm font-bold text-orange-600 tracking-widest uppercase">Xem blog</Link>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
            {NEWS.slice(0, 3).map((item) => (
@@ -222,10 +222,10 @@ export function Home() {
                 </div>
                 <div className="space-y-3">
                    <div className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{item.date}</div>
-                   <h3 className="font-bold text-slate-900 leading-snug group-hover:text-blue-600 transition-colors line-clamp-2 italic underline underline-offset-4 decoration-blue-100 group-hover:decoration-blue-400">
+                   <h3 className="font-bold text-slate-900 leading-snug group-hover:text-orange-600 transition-colors line-clamp-2 italic underline underline-offset-4 decoration-orange-100 group-hover:decoration-orange-400">
                      {item.title}
                    </h3>
-                   <button className="text-xs font-black text-blue-600 group-hover:translate-x-2 transition-transform inline-flex items-center gap-1 uppercase tracking-widest mt-2">
+                   <button className="text-xs font-black text-orange-600 group-hover:translate-x-2 transition-transform inline-flex items-center gap-1 uppercase tracking-widest mt-2">
                      Đọc ngay <ArrowRight size={14} />
                    </button>
                 </div>

@@ -28,7 +28,7 @@ export function ProductDetails() {
   if (loading) {
     return (
       <div className="min-h-[60vh] flex items-center justify-center">
-        <Loader2 className="animate-spin text-blue-600" size={48} />
+        <Loader2 className="animate-spin text-orange-600" size={48} />
       </div>
     );
   }
@@ -41,9 +41,9 @@ export function ProductDetails() {
       <div className="bg-slate-50 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <nav className="flex text-[10px] font-black uppercase tracking-widest text-slate-400">
-            <Link to="/" className="hover:text-blue-600 transition-colors">Trang chủ</Link>
+            <Link to="/" className="hover:text-orange-600 transition-colors">Trang chủ</Link>
             <ChevronRight size={12} className="mx-2 text-slate-300" />
-            <Link to="/products" className="hover:text-blue-600 transition-colors">Sản phẩm</Link>
+            <Link to="/products" className="hover:text-orange-600 transition-colors">Sản phẩm</Link>
             <ChevronRight size={12} className="mx-2 text-slate-300" />
             <span className="text-slate-900 truncate font-black">{product.name}</span>
           </nav>
@@ -68,7 +68,7 @@ export function ProductDetails() {
             </motion.div>
             <div className="grid grid-cols-4 gap-4">
                {[1,2,3,4].map(idx => (
-                 <div key={idx} className="aspect-square bg-slate-50 rounded-2xl border border-slate-100 p-2 cursor-pointer hover:border-blue-600 transition-colors">
+                 <div key={idx} className="aspect-square bg-slate-50 rounded-2xl border border-slate-100 p-2 cursor-pointer hover:border-orange-600 transition-colors">
                     <img src={product.image} className="w-full h-full object-contain opacity-40 hover:opacity-100 transition-opacity" referrerPolicy="no-referrer" />
                  </div>
                ))}
@@ -78,7 +78,7 @@ export function ProductDetails() {
           {/* Product Info */}
           <div className="space-y-10">
             <div>
-              <div className="inline-block px-3 py-1 bg-blue-100 text-blue-600 text-[10px] font-black rounded-lg mb-4 uppercase tracking-widest">
+              <div className="inline-block px-3 py-1 bg-orange-100 text-orange-600 text-[10px] font-black rounded-lg mb-4 uppercase tracking-widest">
                 {product.category}
               </div>
               <h1 className="text-3xl sm:text-5xl font-black text-slate-900 mb-6 tracking-tight leading-tight">{product.name}</h1>
@@ -108,7 +108,7 @@ export function ProductDetails() {
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="p-5 bento-card bg-slate-50 border-none flex items-center space-x-4 shadow-none">
-                  <div className="p-3 bg-white rounded-2xl text-blue-600 shadow-sm"><Truck size={20} /></div>
+                  <div className="p-3 bg-white rounded-2xl text-orange-600 shadow-sm"><Truck size={20} /></div>
                   <div className="text-xs font-black text-slate-700 uppercase tracking-tight">Giao hàng hỏa tốc 2h</div>
                 </div>
                 <div className="p-5 bento-card bg-slate-50 border-none flex items-center space-x-4 shadow-none">
@@ -119,7 +119,7 @@ export function ProductDetails() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-6">
-              <button className="flex-1 py-4 bg-blue-600 text-white font-black uppercase tracking-widest text-xs rounded-2xl hover:bg-blue-700 transition-all flex items-center justify-center shadow-xl shadow-blue-200">
+              <button className="flex-1 py-4 bg-orange-600 text-white font-black uppercase tracking-widest text-xs rounded-2xl hover:bg-orange-700 transition-all flex items-center justify-center shadow-xl shadow-orange-200">
                 <ShoppingBag className="mr-2" size={18} />
                 Thêm giỏ hàng
               </button>
@@ -131,7 +131,7 @@ export function ProductDetails() {
             {/* Specifications */}
             <div className="pt-12 border-t border-slate-100">
               <h3 className="text-xl font-black text-slate-900 mb-8 uppercase tracking-tight flex items-center">
-                <ThumbsUp size={22} className="mr-3 text-blue-600" />
+                <ThumbsUp size={22} className="mr-3 text-orange-600" />
                 Thông số kỹ thuật
               </h3>
               <div className="bento-card border-none bg-slate-50 overflow-hidden divide-y divide-slate-200 shadow-none">

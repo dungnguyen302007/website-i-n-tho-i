@@ -35,7 +35,7 @@ export function Products() {
   if (loading) {
     return (
       <div className="min-h-[60vh] flex items-center justify-center">
-        <Loader2 className="animate-spin text-blue-600" size={48} />
+        <Loader2 className="animate-spin text-orange-600" size={48} />
       </div>
     );
   }
@@ -46,7 +46,7 @@ export function Products() {
       <div className="bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <nav className="flex text-[10px] sm:text-xs font-bold uppercase tracking-widest text-slate-400">
-            <Link to="/" className="hover:text-blue-600 transition-colors">Trang chủ</Link>
+            <Link to="/" className="hover:text-orange-600 transition-colors">Trang chủ</Link>
             <ChevronRight size={12} className="mx-2 text-slate-300" />
             <span className="text-slate-900">Sản phẩm</span>
           </nav>
@@ -59,7 +59,7 @@ export function Products() {
           <aside className="w-full lg:w-64 space-y-6">
             <div className="bento-card p-6 bg-white shrink-0">
               <h3 className="text-xs font-black text-slate-900 uppercase tracking-widest mb-6 flex items-center">
-                <Filter size={14} className="mr-2 text-blue-600" />
+                <Filter size={14} className="mr-2 text-orange-600" />
                 Danh mục
               </h3>
               <div className="space-y-1">
@@ -70,7 +70,7 @@ export function Products() {
                     className={cn(
                       "w-full text-left px-4 py-2.5 rounded-xl text-sm font-bold transition-all",
                       currentCategory === cat 
-                        ? "bg-blue-600 text-white shadow-lg shadow-blue-100" 
+                        ? "bg-orange-600 text-white shadow-lg shadow-orange-100" 
                         : "text-slate-500 hover:bg-slate-50 hover:text-slate-900"
                     )}
                   >
@@ -84,9 +84,9 @@ export function Products() {
               <div className="relative z-10">
                 <h4 className="font-bold text-lg mb-2">Ưu đãi hôm nay</h4>
                 <p className="text-xs text-white/60 mb-4 font-medium leading-relaxed">Giảm thêm 5% khi quét mã QR thanh toán qua VNPay tại hệ thống.</p>
-                <button className="w-full py-2 bg-blue-600 text-white text-[10px] font-black uppercase tracking-widest rounded-lg hover:bg-blue-700 transition-colors">Xem ngay</button>
+                <button className="w-full py-2 bg-orange-600 text-white text-[10px] font-black uppercase tracking-widest rounded-lg hover:bg-orange-700 transition-colors">Xem ngay</button>
               </div>
-              <div className="absolute -right-6 -bottom-6 w-20 h-20 bg-blue-600/20 rounded-full blur-xl"></div>
+              <div className="absolute -right-6 -bottom-6 w-20 h-20 bg-orange-600/20 rounded-full blur-xl"></div>
             </div>
           </aside>
 
@@ -98,11 +98,11 @@ export function Products() {
                 <span className="text-sm font-bold text-slate-300 ml-3 uppercase tracking-widest">({filteredProducts.length})</span>
               </h1>
               <div className="relative group">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-blue-600 transition-colors" size={16} />
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-orange-600 transition-colors" size={16} />
                 <input 
                   type="text" 
                   placeholder="Tìm kiếm điện thoại..." 
-                  className="pl-10 pr-4 py-2.5 bg-white bento-card-border rounded-2xl text-xs font-bold w-full sm:w-64 focus:outline-none focus:ring-2 focus:ring-blue-600 border border-slate-200"
+                  className="pl-10 pr-4 py-2.5 bg-white bento-card-border rounded-2xl text-xs font-bold w-full sm:w-64 focus:outline-none focus:ring-2 focus:ring-orange-600 border border-slate-200"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                 />
@@ -131,9 +131,9 @@ export function Products() {
                       )}
                     </Link>
                     <div className="p-6 flex flex-col flex-1">
-                      <div className="text-[10px] font-black text-blue-600 uppercase tracking-widest mb-1">{product.category}</div>
+                      <div className="text-[10px] font-black text-orange-600 uppercase tracking-widest mb-1">{product.category}</div>
                       <Link to={`/product/${product.id}`}>
-                        <h3 className="font-bold text-slate-900 group-hover:text-blue-600 transition-colors line-clamp-1 mb-2 text-lg">
+                        <h3 className="font-bold text-slate-900 group-hover:text-orange-600 transition-colors line-clamp-1 mb-2 text-lg">
                           {product.name}
                         </h3>
                       </Link>
@@ -147,7 +147,7 @@ export function Products() {
                           </span>
                         )}
                       </div>
-                      <button className="w-full py-3 bg-slate-900 text-white text-xs font-black uppercase tracking-widest rounded-2xl hover:bg-blue-600 transition-all shadow-lg active:scale-95 shadow-slate-200">
+                      <button className="w-full py-3 bg-slate-900 text-white text-xs font-black uppercase tracking-widest rounded-2xl hover:bg-orange-600 transition-all shadow-lg active:scale-95 shadow-slate-200">
                         Thêm giỏ hàng
                       </button>
                     </div>
@@ -160,7 +160,7 @@ export function Products() {
                 <p className="text-slate-500 font-bold uppercase tracking-widest">Không tìm thấy sản phẩm nào phù hợp.</p>
                 <button 
                   onClick={() => {setSearchQuery(''); setSearchParams({ category: 'Tất cả' })}}
-                  className="mt-6 px-8 py-3 bg-blue-600 text-white font-black text-xs uppercase tracking-widest rounded-2xl hover:bg-blue-700 transition-all"
+                  className="mt-6 px-8 py-3 bg-orange-600 text-white font-black text-xs uppercase tracking-widest rounded-2xl hover:bg-orange-700 transition-all"
                 >
                   Xóa tất cả bộ lọc
                 </button>
