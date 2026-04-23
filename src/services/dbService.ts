@@ -8,21 +8,22 @@ import {
   limit, 
   orderBy,
   addDoc,
+  updateDoc,
+  deleteDoc,
   serverTimestamp
 } from 'firebase/firestore';
 import { db, handleFirestoreError } from '../lib/firebase';
 import { Product, PRODUCTS } from '../lib/constants';
 
 const PRODUCTS_COLLECTION = 'products';
+const MESSAGES_COLLECTION = 'messages';
 
 export async function getProducts(): Promise<Product[]> {
   try {
     const querySnapshot = await getDocs(collection(db, PRODUCTS_COLLECTION));
     const products = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as Product));
     
-    // If no products in DB, seed with mock data (optional, but good for demo)
     if (products.length === 0) {
-      console.log("No products found in Firestore, using fallback mock data.");
       return PRODUCTS;
     }
     
@@ -41,16 +42,48 @@ export async function getProductById(id: string): Promise<Product | null> {
       return { id: docSnap.id, ...docSnap.data() } as Product;
     }
     
-    // Fallback to mock data for demo
     return PRODUCTS.find(p => p.id === id) || null;
   } catch (error) {
     return handleFirestoreError(error, 'get', `${PRODUCTS_COLLECTION}/${id}`);
   }
 }
 
+export async function addProduct(product: Omit<Product, 'id'>) {
+  try {
+    const docRef = await addDoc(collection(db, PRODUCTS_COLLECTION), {
+      ...product,
+      updatedAt: serverTimestamp()
+    });
+    return docRef.id;
+  } catch (error) {
+    return handleFirestoreError(error, 'create', PRODUCTS_COLLECTION);
+  }
+}
+
+export async function updateProduct(id: string, product: Partial<Product>) {
+  try {
+    const docRef = doc(db, PRODUCTS_COLLECTION, id);
+    await updateDoc(docRef, {
+      ...product,
+      updatedAt: serverTimestamp()
+    });
+  } catch (error) {
+    return handleFirestoreError(error, 'update', `${PRODUCTS_COLLECTION}/${id}`);
+  }
+}
+
+export async function deleteProduct(id: string) {
+  try {
+    const docRef = doc(db, PRODUCTS_COLLECTION, id);
+    await deleteDoc(docRef);
+  } catch (error) {
+    return handleFirestoreError(error, 'delete', `${PRODUCTS_COLLECTION}/${id}`);
+  }
+}
+
 export async function submitContactMessage(name: string, email: string, message: string) {
   try {
-    const docRef = await addDoc(collection(db, 'messages'), {
+    const docRef = await addDoc(collection(db, MESSAGES_COLLECTION), {
       name,
       email,
       message,
@@ -58,6 +91,16 @@ export async function submitContactMessage(name: string, email: string, message:
     });
     return docRef.id;
   } catch (error) {
-    return handleFirestoreError(error, 'create', 'messages');
+    return handleFirestoreError(error, 'create', MESSAGES_COLLECTION);
+  }
+}
+
+export async function getContactMessages() {
+  try {
+    const q = query(collection(db, MESSAGES_COLLECTION), orderBy('createdAt', 'desc'));
+    const querySnapshot = await getDocs(q);
+    return querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+  } catch (error) {
+    return handleFirestoreError(error, 'list', MESSAGES_COLLECTION);
   }
 }

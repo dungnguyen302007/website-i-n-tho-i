@@ -27,8 +27,8 @@ export function ProductDetails() {
 
   if (loading) {
     return (
-      <div className="min-h-[60vh] flex items-center justify-center">
-        <Loader2 className="animate-spin text-orange-600" size={48} />
+      <div className="min-h-[80vh] flex items-center justify-center">
+        <Loader2 className="animate-spin text-red-600" size={48} />
       </div>
     );
   }
@@ -38,38 +38,40 @@ export function ProductDetails() {
   return (
     <div className="min-h-screen bg-white pb-20">
       {/* Breadcrumbs */}
-      <div className="bg-slate-50 border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <nav className="flex text-[10px] font-black uppercase tracking-widest text-slate-400">
-            <Link to="/" className="hover:text-orange-600 transition-colors">Trang chủ</Link>
+      <div className="bg-[#f4f4f4] border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 py-4">
+          <nav className="flex text-[10px] font-black uppercase tracking-widest text-slate-400 italic">
+            <Link to="/" className="hover:text-red-600 transition-colors">Trang chủ</Link>
             <ChevronRight size={12} className="mx-2 text-slate-300" />
-            <Link to="/products" className="hover:text-orange-600 transition-colors">Sản phẩm</Link>
+            <Link to="/products" className="hover:text-red-600 transition-colors">Sản phẩm</Link>
             <ChevronRight size={12} className="mx-2 text-slate-300" />
             <span className="text-slate-900 truncate font-black">{product.name}</span>
           </nav>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+      <div className="max-w-7xl mx-auto px-4 py-10 sm:py-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
           {/* Image Gallery */}
-          <div className="space-y-6">
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="aspect-square bg-slate-50 rounded-[2.5rem] overflow-hidden border border-slate-100 p-10 flex items-center justify-center shadow-inner"
-            >
-              <img 
+          <div className="space-y-6 sticky top-28">
+            <div className="aspect-square bg-white rounded-[2rem] overflow-hidden border border-slate-100 p-8 flex items-center justify-center shadow-lg shadow-slate-100/50">
+              <motion.img 
+                key={product.id}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
                 src={product.image} 
                 alt={product.name} 
                 className="w-full h-full object-contain"
                 referrerPolicy="no-referrer"
               />
-            </motion.div>
+            </div>
             <div className="grid grid-cols-4 gap-4">
                {[1,2,3,4].map(idx => (
-                 <div key={idx} className="aspect-square bg-slate-50 rounded-2xl border border-slate-100 p-2 cursor-pointer hover:border-orange-600 transition-colors">
-                    <img src={product.image} className="w-full h-full object-contain opacity-40 hover:opacity-100 transition-opacity" referrerPolicy="no-referrer" />
+                 <div key={idx} className={cn(
+                   "aspect-square bg-white rounded-xl border-2 p-2 cursor-pointer transition-all",
+                   idx === 1 ? "border-red-600" : "border-slate-100 opacity-40 hover:opacity-100 hover:border-red-200"
+                 )}>
+                    <img src={product.image} className="w-full h-full object-contain" referrerPolicy="no-referrer" />
                  </div>
                ))}
             </div>
@@ -78,67 +80,65 @@ export function ProductDetails() {
           {/* Product Info */}
           <div className="space-y-10">
             <div>
-              <div className="inline-block px-3 py-1 bg-orange-100 text-orange-600 text-[10px] font-black rounded-lg mb-4 uppercase tracking-widest">
+              <div className="inline-block px-3 py-1 bg-red-100 text-red-600 text-[10px] font-black rounded-lg mb-6 uppercase tracking-widest italic">
                 {product.category}
               </div>
-              <h1 className="text-3xl sm:text-5xl font-black text-slate-900 mb-6 tracking-tight leading-tight">{product.name}</h1>
-              <div className="flex items-center space-x-4 mb-8">
-                <div className="flex text-yellow-400">
-                  {[1,2,3,4,5].map(i => <Star key={i} size={16} fill="currentColor" />)}
+              <h1 className="text-3xl sm:text-5xl font-black text-slate-900 mb-6 tracking-tighter leading-tight uppercase italic">{product.name}</h1>
+              <div className="flex items-center space-x-4 mb-10">
+                <div className="flex items-center gap-1">
+                  {[1,2,3,4,5].map(i => <Star key={i} size={14} className={i <= 4 ? "text-yellow-400 fill-yellow-400" : "text-slate-200 fill-slate-200"} />)}
                 </div>
-                <span className="text-sm text-slate-300 font-black">/</span>
-                <span className="text-xs text-slate-500 font-bold uppercase tracking-wider">128 đánh giá thực tế</span>
+                <span className="text-[10px] text-slate-300 font-black tracking-widest uppercase italic">| 128 đánh giá thực tế</span>
               </div>
-              <div className="flex items-baseline space-x-4">
-                <span className="text-4xl font-black text-slate-900">
-                  {new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(product.price)}
+              <div className="flex items-baseline space-x-6">
+                <span className="text-4xl sm:text-5xl font-black text-red-600 italic">
+                  {new Intl.NumberFormat('vi-VN').format(product.price)}đ
                 </span>
                 {product.oldPrice && (
                   <span className="text-xl text-slate-300 line-through font-bold">
-                    {new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(product.oldPrice)}
+                    {new Intl.NumberFormat('vi-VN').format(product.oldPrice)}đ
                   </span>
                 )}
               </div>
             </div>
 
             <div className="space-y-6">
-              <p className="text-slate-500 leading-relaxed font-medium">
+              <p className="text-slate-500 leading-relaxed font-medium italic text-lg">
                 {product.description}
               </p>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="p-5 bento-card bg-slate-50 border-none flex items-center space-x-4 shadow-none">
-                  <div className="p-3 bg-white rounded-2xl text-orange-600 shadow-sm"><Truck size={20} /></div>
-                  <div className="text-xs font-black text-slate-700 uppercase tracking-tight">Giao hàng hỏa tốc 2h</div>
+                <div className="p-6 bg-[#f4f4f4] rounded-2xl flex items-center space-x-6">
+                  <div className="w-12 h-12 bg-white rounded-xl text-red-600 shadow-sm flex items-center justify-center shrink-0"><Truck size={24} /></div>
+                  <div className="text-[10px] font-black text-slate-800 uppercase tracking-widest italic leading-tight">Giao hàng hỏa tốc 2h</div>
                 </div>
-                <div className="p-5 bento-card bg-slate-50 border-none flex items-center space-x-4 shadow-none">
-                  <div className="p-3 bg-white rounded-2xl text-green-600 shadow-sm"><ShieldCheck size={20} /></div>
-                  <div className="text-xs font-black text-slate-700 uppercase tracking-tight">Bảo hành 12 tháng</div>
+                <div className="p-6 bg-[#f4f4f4] rounded-2xl flex items-center space-x-6">
+                  <div className="w-12 h-12 bg-white rounded-xl text-green-600 shadow-sm flex items-center justify-center shrink-0"><ShieldCheck size={24} /></div>
+                  <div className="text-[10px] font-black text-slate-800 uppercase tracking-widest italic leading-tight">Bảo hành 12 tháng</div>
                 </div>
               </div>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-6">
-              <button className="flex-1 py-4 bg-orange-600 text-white font-black uppercase tracking-widest text-xs rounded-2xl hover:bg-orange-700 transition-all flex items-center justify-center shadow-xl shadow-orange-200">
-                <ShoppingBag className="mr-2" size={18} />
-                Thêm giỏ hàng
+              <button className="flex-1 py-4 bg-red-600 text-white font-black uppercase tracking-widest text-xs rounded-2xl hover:bg-slate-900 transition-all flex items-center justify-center gap-3 shadow-2xl shadow-red-100 active:scale-95">
+                <ShoppingBag size={20} /> Thêm vào giỏ hàng
               </button>
-              <button className="flex-1 py-4 bg-slate-900 text-white font-black uppercase tracking-widest text-xs rounded-2xl hover:bg-slate-800 transition-all text-center shadow-xl shadow-slate-200">
+              <button className="flex-1 py-4 bg-slate-900 text-white font-black uppercase tracking-widest text-xs rounded-2xl hover:bg-black transition-all text-center shadow-xl active:scale-95">
                 Mua ngay
               </button>
             </div>
 
             {/* Specifications */}
             <div className="pt-12 border-t border-slate-100">
-              <h3 className="text-xl font-black text-slate-900 mb-8 uppercase tracking-tight flex items-center">
-                <ThumbsUp size={22} className="mr-3 text-orange-600" />
-                Thông số kỹ thuật
-              </h3>
-              <div className="bento-card border-none bg-slate-50 overflow-hidden divide-y divide-slate-200 shadow-none">
+               <div className="flex items-center gap-4 mb-8">
+                  <TrendingUp size={24} className="text-red-600" />
+                  <h3 className="text-xl font-black text-slate-900 uppercase tracking-tight italic leading-none">Thông số <span className="text-red-600">kỹ thuật</span></h3>
+               </div>
+              <div className="bg-white rounded-3xl border border-slate-100 overflow-hidden divide-y divide-slate-100 shadow-sm">
                 {Object.entries(product.specs).map(([key, value]) => (
-                  <div key={key} className="flex px-8 py-5 text-sm">
-                    <span className="w-1/3 font-black text-slate-400 uppercase text-[10px] tracking-widest">{key}</span>
-                    <span className="w-2/3 text-slate-900 font-bold">{value}</span>
+                  <div key={key} className="flex px-10 py-5 text-sm group hover:bg-slate-50 transition-colors">
+                    <span className="w-1/3 font-black text-slate-400 uppercase text-[10px] tracking-widest italic group-hover:text-red-600 transition-colors">{key}</span>
+                    <span className="w-2/3 text-slate-900 font-bold italic">{value}</span>
                   </div>
                 ))}
               </div>

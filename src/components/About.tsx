@@ -1,114 +1,146 @@
 import { motion } from 'motion/react';
-import { Star, ShieldCheck, Heart, Award, Users, MapPin } from 'lucide-react';
+import { ShieldCheck, Users, Globe, Award, TrendingUp, CheckCircle, ChevronRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export function About() {
   return (
-    <div className="min-h-screen bg-white">
-      {/* Hero */}
-      <section className="py-20 sm:py-32 bg-slate-50 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div 
+    <div className="min-h-screen bg-slate-950">
+      {/* Hero Section */}
+      <section className="relative py-24 sm:py-32 bg-slate-900 overflow-hidden">
+        <div className="absolute inset-0 opacity-20 grayscale pointer-events-none">
+          <img 
+            src="https://images.unsplash.com/photo-1556740734-793562f97c62?q=80&w=2000&auto=format&fit=crop" 
+            alt="About Backdrop" 
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white space-y-8">
+           <div className="inline-block px-4 py-1.5 bg-red-600 rounded-full text-[10px] font-black uppercase tracking-[0.3em] italic animate-pulse">
+              Câu chuyện uMobi
+           </div>
+          <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-center max-w-4xl mx-auto"
+            className="text-5xl sm:text-8xl font-black italic tracking-tighter mb-8 leading-none uppercase"
           >
-            <div className="inline-block px-4 py-1.5 bg-orange-100 text-orange-600 text-xs font-black rounded-full uppercase tracking-widest mb-10">
-               Thương hiệu uy tín
-            </div>
-            <h1 className="text-4xl sm:text-8xl font-black text-slate-900 mb-10 tracking-tighter italic leading-none">VỀ <span className="text-orange-600 not-italic">SHOPMOBILE</span></h1>
-            <p className="text-lg sm:text-2xl text-slate-500 leading-relaxed italic max-w-2xl mx-auto">
-              "Mang công nghệ đỉnh cao đến gần hơn với người Việt bằng sự tin cậy và chất lượng vượt thời gian."
-            </p>
-          </motion.div>
+            SỨ MỆNH <br/><span className="text-red-600 not-italic">KẾT NỐI</span>
+          </motion.h1>
+          <p className="text-slate-400 max-w-2xl mx-auto text-lg font-medium leading-relaxed italic">
+            uMobi ra đời with khát vọng mang công nghệ đỉnh cao đến gần hơn with mọi người Việt qua trải nghiệm mua sắm đẳng cấp nhất.
+          </p>
         </div>
-        <div className="absolute top-0 right-0 w-1/2 h-full bg-orange-600/5 -skew-x-12 transform translate-x-1/2 opacity-50"></div>
       </section>
 
-      {/* Values Bento Grid */}
-      <section className="py-24 sm:py-32">
+      {/* Breadcrumbs */}
+      <div className="bg-slate-900 border-b border-white/5">
+        <div className="max-w-7xl mx-auto px-4 py-4">
+          <nav className="flex text-[10px] font-black uppercase tracking-widest text-slate-500 italic">
+            <Link to="/" className="hover:text-red-600 transition-colors">Trang chủ</Link>
+            <ChevronRight size={12} className="mx-2 text-slate-800" />
+            <span className="text-white truncate font-black">Giới thiệu về uMobi</span>
+          </nav>
+        </div>
+      </div>
+
+      <section className="py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bento-card p-10 bg-white space-y-6 text-center">
-              <div className="w-16 h-16 bg-orange-50 text-orange-600 rounded-[2rem] flex items-center justify-center mx-auto shadow-sm"><ShieldCheck size={32} /></div>
-              <h3 className="text-xl font-black text-slate-900 uppercase italic">Uy tín 10 năm</h3>
-              <p className="text-slate-500 text-sm font-medium leading-relaxed">Khẳng định vị thế qua hơn một thập kỷ tận tâm phục vụ thị trường công nghệ di động.</p>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+            <div className="space-y-12 order-2 lg:order-1 italic">
+              <h2 className="text-5xl font-black text-white tracking-tighter uppercase leading-tight italic">
+                CHẤT LƯỢNG LÀ <br/><span className="text-red-600">DANH DỰ</span> CỦA uMOBI
+              </h2>
+              <div className="space-y-8">
+                 <p className="text-slate-500 text-xl leading-relaxed font-bold">
+                    Được thành lập từ năm 2015, uMobi đã trải qua hành trình gần một thập kỷ khẳng định vị thế. Chúng tôi không chỉ bán điện thoại, chúng tôi bán sự an tâm và phong cách sống hiện đại.
+                 </p>
+                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-8">
+                    <div className="flex items-start gap-4">
+                       <div className="w-10 h-10 bg-red-600/10 rounded-xl flex items-center justify-center border border-red-600/20">
+                         <CheckCircle size={20} className="text-red-600" />
+                       </div>
+                       <span className="text-white font-black uppercase text-[10px] tracking-widest leading-normal pt-2">100% Hàng chính hãng</span>
+                    </div>
+                    <div className="flex items-start gap-4">
+                       <div className="w-10 h-10 bg-red-600/10 rounded-xl flex items-center justify-center border border-red-600/20">
+                         <CheckCircle size={20} className="text-red-600" />
+                       </div>
+                       <span className="text-white font-black uppercase text-[10px] tracking-widest leading-normal pt-2">Bảo hành VIP trọn đời</span>
+                    </div>
+                    <div className="flex items-start gap-4">
+                       <div className="w-10 h-10 bg-red-600/10 rounded-xl flex items-center justify-center border border-red-600/20">
+                         <CheckCircle size={20} className="text-red-600" />
+                       </div>
+                       <span className="text-white font-black uppercase text-[10px] tracking-widest leading-normal pt-2">Giá luôn top thị trường</span>
+                    </div>
+                    <div className="flex items-start gap-4">
+                       <div className="w-10 h-10 bg-red-600/10 rounded-xl flex items-center justify-center border border-red-600/20">
+                         <CheckCircle size={20} className="text-red-600" />
+                       </div>
+                       <span className="text-white font-black uppercase text-[10px] tracking-widest leading-normal pt-2">Hỗ trợ kỹ thuật 24/7</span>
+                    </div>
+                 </div>
+              </div>
             </div>
-            <div className="bento-card p-10 bg-slate-900 text-white space-y-6 text-center">
-              <div className="w-16 h-16 bg-white/10 text-red-500 rounded-[2rem] flex items-center justify-center mx-auto shadow-sm"><Heart size={32} /></div>
-              <h3 className="text-xl font-black uppercase italic">Tận tâm phục vụ</h3>
-              <p className="text-white/60 text-sm font-medium leading-relaxed">Đội ngũ kỹ thuật viên am hiểu sâu sắc, luôn đặt sự hài lòng của khách hàng lên hàng đầu.</p>
-            </div>
-            <div className="bento-card p-10 bg-white space-y-6 text-center border-orange-100 shadow-xl shadow-orange-50">
-              <div className="w-16 h-16 bg-orange-600 text-white rounded-[2rem] flex items-center justify-center mx-auto shadow-lg shadow-orange-200"><Award size={32} /></div>
-              <h3 className="text-xl font-black text-orange-600 uppercase italic">Chất lượng vàng</h3>
-              <p className="text-slate-500 text-sm font-medium leading-relaxed">Mọi sản phẩm đều là hàng chính hãng, quy trình kiểm định gắt gao nhất hiện nay.</p>
+            <div className="relative order-1 lg:order-2">
+              <img 
+                src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=2000&auto=format&fit=crop" 
+                alt="uMobi Experience" 
+                className="w-full h-[500px] object-cover rounded-[3rem] shadow-2xl skew-y-2 group hover:skew-y-0 transition-all duration-700" 
+              />
+              <div className="absolute -bottom-10 -left-10 bg-red-600 p-10 rounded-[2.5rem] shadow-2xl shadow-red-200">
+                 <span className="text-5xl font-black text-white italic">09+</span>
+                 <p className="text-[10px] font-black text-white/60 uppercase tracking-widest mt-2 italic">Năm kinh nghiệm</p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Stats Section with Bento Styling */}
-      <section className="py-24 bg-slate-900 text-white relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-           <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 text-center items-center">
-              <div>
-                <div className="text-5xl sm:text-7xl font-black italic mb-2 text-orange-500">10+</div>
-                <div className="text-slate-400 text-[10px] uppercase tracking-[0.3em] font-black">Năm hành trình</div>
-              </div>
-              <div>
-                <div className="text-5xl sm:text-7xl font-black italic mb-2 text-white">50+</div>
-                <div className="text-slate-400 text-[10px] uppercase tracking-[0.3em] font-black">Cửa hàng lớn</div>
-              </div>
-              <div>
-                <div className="text-5xl sm:text-7xl font-black italic mb-2 text-orange-500">1M+</div>
-                <div className="text-slate-400 text-[10px] uppercase tracking-[0.3em] font-black">K.Hàng tin dùng</div>
-              </div>
-              <div>
-                <div className="text-5xl sm:text-7xl font-black italic mb-2 text-white">24/7</div>
-                <div className="text-slate-400 text-[10px] uppercase tracking-[0.3em] font-black">Support online</div>
-              </div>
-           </div>
-        </div>
-        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-orange-600/10 to-transparent pointer-events-none"></div>
-      </section>
-
-      {/* Story Section */}
-      <section className="py-24 sm:py-32">
+      {/* Values */}
+      <section className="py-32 bg-white/5 border-t border-white/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-           <div className="flex flex-col lg:flex-row items-center gap-16">
-              <div className="flex-1 w-full">
-                 <motion.div 
-                   whileInView={{ scale: [0.9, 1], opacity: [0, 1] }}
-                   className="bento-card p-3 bg-slate-100/50 border-none shadow-2xl shadow-slate-200"
-                 >
-                   <img 
-                      src="https://images.unsplash.com/photo-1556740734-7f9a2b7a0f42?q=80&w=1200&auto=format&fit=crop" 
-                      alt="Our Vision" 
-                      className="rounded-[2.5rem] w-full"
-                      referrerPolicy="no-referrer"
-                   />
-                 </motion.div>
-              </div>
-              <div className="flex-1 space-y-10">
-                 <div className="inline-block text-[10px] font-black text-orange-600 uppercase tracking-widest border-b-4 border-orange-100 pb-1">Our Vision</div>
-                 <h2 className="text-4xl sm:text-6xl font-black text-slate-900 leading-tight tracking-tighter italic">HÀNH TRÌNH KIẾN TẠO <span className="text-orange-600 not-italic">ƯỚC MƠ</span></h2>
-                 <p className="text-slate-500 leading-relaxed font-semibold text-lg italic">
-                    Bắt đầu từ một cửa hàng nhỏ tại trái tim Quận 1 vào năm 2014, SHOPMOBILE đã vươn mình trở thành biểu tượng của sự tin cậy trong ngành thiết bị di động. Chúng tôi tin rằng mỗi sản phẩm bán ra là một lời hứa bền lâu với công nghệ.
-                 </p>
-                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
-                    <div className="flex items-center space-x-4 p-4 bento-card bg-slate-50 border-none shadow-none">
-                       <div className="w-10 h-10 bg-white rounded-xl shadow-sm flex items-center justify-center text-orange-600"><Users size={20} /></div>
-                       <span className="font-black text-slate-700 text-xs uppercase tracking-tight">500+ Nhân sự tận tâm</span>
-                    </div>
-                    <div className="flex items-center space-x-4 p-4 bento-card bg-slate-50 border-none shadow-none">
-                       <div className="w-10 h-10 bg-white rounded-xl shadow-sm flex items-center justify-center text-orange-600"><MapPin size={20} /></div>
-                       <span className="font-black text-slate-700 text-xs uppercase tracking-tight">15 Tỉnh thành trọng điểm</span>
-                    </div>
-                 </div>
-              </div>
+           <div className="flex flex-col items-center text-center mb-24 space-y-6">
+              <TrendingUp size={64} className="text-red-600" />
+              <h2 className="text-5xl font-black text-white italic uppercase tracking-tighter">Giá trị <span className="text-red-600 not-italic">cốt lõi</span></h2>
            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 italic">
+            <ValueCard 
+              icon={<ShieldCheck size={32} />} 
+              title="MINH BẠCH" 
+              desc="Mọi quy trình từ nhập hàng đến bảo hành đều được công khai và minh bạch with khách hàng."
+            />
+            <ValueCard 
+              icon={<Users size={32} />} 
+              title="TẬN TÂM" 
+              desc="Khách hàng là trung tâm của mọi hoạt động. Sự hài lòng của bạn là thước đo của chúng tôi."
+            />
+            <ValueCard 
+              icon={<Globe size={32} />} 
+              title="TIÊN PHONG" 
+              desc="Luôn dẫn đầu trong việc mang những công nghệ mới nhất, siêu phẩm đỉnh nhất về Việt Nam."
+            />
+            <ValueCard 
+              icon={<Award size={32} />} 
+              title="TÍN NGHĨA" 
+              desc="Giữ vững lời hứa và cam kết về chất lượng sản phẩm cũng như dịch vụ hậu mãi số 1."
+            />
+          </div>
         </div>
       </section>
+    </div>
+  );
+}
+
+function ValueCard({ icon, title, desc }: { icon: React.ReactNode, title: string, desc: string }) {
+  return (
+    <div className="bg-white p-10 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-2xl transition-all duration-500 group flex flex-col h-full text-center items-center">
+      <div className="w-20 h-20 bg-[#f4f4f4] text-red-600 rounded-[1.5rem] mb-8 flex items-center justify-center group-hover:bg-red-600 group-hover:text-white transition-all shadow-sm">
+        {icon}
+      </div>
+      <h3 className="text-xl font-black text-slate-900 uppercase tracking-widest mb-4">{title}</h3>
+      <p className="text-slate-400 font-bold leading-relaxed text-sm">
+        {desc}
+      </p>
     </div>
   );
 }
